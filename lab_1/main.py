@@ -46,15 +46,20 @@ def print_forms(forms: list[str]) -> None:
     Выводит анкеты на экран.
     :param forms: список анкет
     """
+    if not forms:
+        raise Exception("Empty list")
     for el in forms:
         print(el)
 
 
 def main():
-    filename = get_filename()
-    data = read_data(filename)
-    people = find_people(data)
-    print_forms(people)
+    try:
+        filename = get_filename()
+        data = read_data(filename)
+        people = find_people(data)
+        print_forms(people)
+    except Exception as exc:
+        print(f"Error: {exc}")
 
 
 if __name__ == "__main__":
