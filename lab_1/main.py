@@ -35,7 +35,7 @@ def find_people(data: list[str]) -> list[str]:
     """
     forms = []
     for i in range(5, len(data) - 1, 8):
-        number_pattern = re.search(r"(\+7|8)(\s?)(\(?)(927)", data[i])
+        number_pattern = re.search(r"(\+7|8) 927 ", data[i])
         if number_pattern is not None:
             forms.append(data[i - 4] + data[i - 3] + data[i - 2] + data[i - 1] + data[i] + data[i + 1])
     return forms
