@@ -3,6 +3,10 @@ import re
 
 
 def get_filename() -> str:
+    """
+    Получает имя файла из аргументов командной строки.
+    :return: имя файла
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument("filename", type=str, help="input the name of file")
     args = parser.parse_args()
@@ -10,6 +14,11 @@ def get_filename() -> str:
 
 
 def read_data(filename: str) -> list[str]:
+    """
+    Считывает содержимое файла.
+    :param filename: имя файла
+    :return: список строк файла
+    """
     try:
         with open(filename, mode="r", encoding="UTF-8") as file:
             data = file.readlines()
@@ -19,6 +28,11 @@ def read_data(filename: str) -> list[str]:
 
 
 def find_people(data: list[str]) -> list[str]:
+    """
+    Ищет людей, чьи телефоны имеют код города 927.
+    :param data: список строк файла
+    :return: список анкет найденных людей
+    """
     forms = []
     for i in range(5, len(data) - 1, 8):
         number_pattern = re.search(r"(\+7|8)(\s?)(\(?)(927)", data[i])
@@ -28,6 +42,10 @@ def find_people(data: list[str]) -> list[str]:
 
 
 def print_forms(forms: list[str]) -> None:
+    """
+    Выводит анкеты на экран.
+    :param forms: список анкет
+    """
     for el in forms:
         print(el)
 
