@@ -12,6 +12,7 @@ def create_annotation(csv_path: str, image_dir: str) -> None:
         writer = csv.writer(file)
         writer.writerow(["absolute_path", "relative_path"])
         for image in os.listdir(image_dir):
-            abs_path = os.path.abspath(os.path.join(image_dir, image))
-            rel_path = os.path.relpath(abs_path, image_dir)
-            writer.writerow([abs_path, rel_path])
+            if image.endswith(("jpg", "jpeg", "png")):
+                abs_path = os.path.abspath(os.path.join(image_dir, image))
+                rel_path = os.path.relpath(abs_path, image_dir)
+                writer.writerow([abs_path, rel_path])
