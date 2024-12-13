@@ -9,7 +9,7 @@ def process_image(original_path: str, inverted_path: str) -> None:
     :param original_path: путь к файлу оригинального изображения
     :param inverted_path: путь для сохранения инвертированного изображения
     """
-    image = cv2.imread(original_path, -1)
+    image = cv2.imread(original_path)
     if image is None:
         raise FileNotFoundError(f"Image could not be read from {original_path}")
 
