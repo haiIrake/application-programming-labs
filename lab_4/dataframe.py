@@ -32,3 +32,16 @@ def create_dataframe(csv_path: str) -> pd.DataFrame:
         return df
     except FileNotFoundError:
         print(f"Annotation file not found at {csv_path}")
+
+
+def filter_dataframe(df: pd.DataFrame, max_width: int, max_height: int) -> pd.DataFrame:
+    """
+    Фильтрует дата фрейм по максимальной ширине и максимальной высоте.
+    :param df: дата фрейм
+    :param max_width: максимальная ширина изображения
+    :param max_height: максимальная высота изображения
+    :return: отфильтрованный дата фрейм
+    """
+    return df[(df["width"] <= max_width) & (df["height"] <= max_height)]
+
+
