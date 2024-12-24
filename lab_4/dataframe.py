@@ -45,3 +45,11 @@ def filter_dataframe(df: pd.DataFrame, max_width: int, max_height: int) -> pd.Da
     return df[(df["width"] <= max_width) & (df["height"] <= max_height)]
 
 
+def add_area_and_sort(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Добавляет столбец с площадью изображения и сортирует.
+    :param df: дата фрейм
+    :return: дата фрейм с новым столбцом, отсортированный по площади
+    """
+    df["area"] = df["width"] * df["height"]
+    return df.sort_values("area")
